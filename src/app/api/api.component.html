@@ -7,8 +7,9 @@
   
 </div>
 <h2>Wizards</h2>
-<div *ngFor="let wizard of wizards ">
-    <p>{{ wizard.id }} - {{ wizard.firstName}} - {{ wizard.lastName}} </p>
+<div *ngFor="let wizard of wizards$ | async ">
+    <p>{{ wizard.id }} - {{ wizard.firstName}} - 
+      {{ wizard.lastName}} </p>
   <a routerLink="wizard/{{wizard.id}}" class="btn btn-primary">Wizard-Seul</a>
 </div>
 

@@ -5,6 +5,7 @@
 export interface Elixirs{
     id:string;
     name:string;
+    effect:string;
 }
 
 export interface Wizards{

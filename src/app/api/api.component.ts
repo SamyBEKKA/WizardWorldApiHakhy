@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { WizardWorldApiService } from '../wizard-world-api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
@@ -10,11 +10,11 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-api',
   standalone: true,
-  imports: [FormsModule, CommonModule, FilterPipe, NgFor, WizardSeulComponent, RouterLink],
+  imports: [FormsModule, CommonModule, FilterPipe, WizardSeulComponent, RouterLink],
   templateUrl: './api.component.html',
   styleUrl: './api.component.css'
 })
-export class ApiComponent implements OnInit {
+export class ApiComponent{
   
   // elixirs: Elixirs[]= [];
   wizards: Wizards[]= [];
@@ -23,22 +23,24 @@ export class ApiComponent implements OnInit {
 
   constructor(private wizardService: WizardWorldApiService) { }
 
-  ngOnInit(): void {
-    this.fetchAll();
-  }
+ wizards$ = inject(WizardWorldApiService).getWizards();
 
-  fetchAll(): void {
-    this.wizardService.getWizards().subscribe(response => { this.wizards = response});
-    // forkJoin({
-    //   elixirs: this.wizardService.getElixirs(),
-    //   wizards: this.wizardService.getWizards(),
-    //   houses: this.wizardService.getHouses()
-    // }).subscribe(response => {
-    //   this.elixirs = response.elixirs;
-    //   this.wizards = response.wizards;
-    //   this.houses = response.houses;
-    // });
-  }
+  // ngOnInit(): void {
+  //   this.fetchAll();
+  // }
+
+  // fetchAll(): void {
+  //   this.wizardService.getWizards().subscribe(response => { this.wizards = response});
+  //   // forkJoin({
+  //   //   elixirs: this.wizardService.getElixirs(),
+  //   //   wizards: this.wizardService.getWizards(),
+  //   //   houses: this.wizardService.getHouses()
+  //   // }).subscribe(response => {
+  //   //   this.elixirs = response.elixirs;
+  //   //   this.wizards = response.wizards;
+  //   //   this.houses = response.houses;
+  //   // });
+  // }
   
   
 }

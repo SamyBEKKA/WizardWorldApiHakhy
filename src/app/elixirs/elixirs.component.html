@@ -1,0 +1,5 @@
+<h2 class="container">Elexir</h2>
+<div *ngFor="let elixir of elixirs ">
+    <p>{{ elixir.id }} - {{ elixir.name}} - {{ elixir.effect}} </p>
+  <a routerLink="Elexirs/{{elixir.id}}" class="btn btn-primary">Elixir-Seul</a>
+</div>
